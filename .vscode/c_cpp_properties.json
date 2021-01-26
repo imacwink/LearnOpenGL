@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}",
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/dependencies/GLFW/include",
+                "${workspaceFolder}/dependencies/GLAD/include",
+                "${workspaceFolder}/dependencies/stb_image/include",
+                "${workspaceFolder}/dependencies/GLM"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.17763.0",
+            "compilerPath": "g++",
+            "cStandard": "c11",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "clang-x86"
+        }
+    ],
+    "version": 4
+}

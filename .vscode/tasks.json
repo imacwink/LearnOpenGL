@@ -1,0 +1,38 @@
+
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "g++",
+            "windows": {
+                "args": [
+                    "${workspaceRoot}/src/*.cpp",
+                    "${workspaceRoot}/dependencies/GLAD/src/glad.c",
+                    "${workspaceRoot}/dependencies/stb_image/src/stb_image.cpp",
+                    "-g",
+                    "--std=c++17",
+                    "-I${workspaceRoot}/include",
+                    "-I${workspaceRoot}/dependencies/GLFW/include",
+                    "-I${workspaceFolder}/dependencies/GLAD/include",
+                    "-I${workspaceFolder}/dependencies/stb_image/include",
+                    "-I${workspaceFolder}/dependencies/GLM",
+                    "-lopengl32",
+                    "-L${workspaceRoot}/dependencies/GLFW/lib",
+                    "-static",
+                    "-lglfw3dll",
+                    "-o",
+                    "${workspaceRoot}/builds/windows/main"
+                ]
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+}

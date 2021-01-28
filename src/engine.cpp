@@ -1,6 +1,7 @@
 #include "engine.h"
 #include "example.h"
 #include "lighting.h"
+#include "lightingT.h"
 
 Engine::Engine(int a_width, int a_height, const char* a_windowName)
 {
@@ -145,9 +146,13 @@ void Engine::SetupOpenGlRendering()
     // example->DrawSetting();
     // mComponents.push_back(example);
 
-    ST::PBR::Lighting* lighting =  new ST::PBR::Lighting();
-    lighting->DrawSetting();
-    mComponents.push_back(lighting);
+    // ST::PBR::Lighting* lighting =  new ST::PBR::Lighting();
+    // lighting->DrawSetting();
+    // mComponents.push_back(lighting);
+
+    ST::PBR::LightingT* lightingT =  new ST::PBR::LightingT();
+    lightingT->DrawSetting();
+    mComponents.push_back(lightingT);
 }
 
 void Engine::Update(float a_deltaTime)

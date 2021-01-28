@@ -9,11 +9,15 @@
             "windows": {
                 "args": [
                     "${workspaceRoot}/src/*.cpp",
+                    "${workspaceRoot}/src/pbr/*.cpp",
+                    "${workspaceRoot}/src/common/*.cpp",
                     "${workspaceRoot}/dependencies/GLAD/src/glad.c",
                     "${workspaceRoot}/dependencies/stb_image/src/stb_image.cpp",
                     "-g",
                     "--std=c++17",
                     "-I${workspaceRoot}/include",
+                    "-I${workspaceRoot}/include/pbr",
+                    "-I${workspaceRoot}/include/common",
                     "-I${workspaceRoot}/dependencies/GLFW/include",
                     "-I${workspaceFolder}/dependencies/GLAD/include",
                     "-I${workspaceFolder}/dependencies/stb_image/include",

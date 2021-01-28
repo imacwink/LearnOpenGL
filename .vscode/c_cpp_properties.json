@@ -5,6 +5,8 @@
             "includePath": [
                 "${workspaceFolder}",
                 "${workspaceFolder}/include",
+                "${workspaceFolder}/include/pbr",
+                "${workspaceFolder}/include/common",
                 "${workspaceFolder}/dependencies/GLFW/include",
                 "${workspaceFolder}/dependencies/GLAD/include",
                 "${workspaceFolder}/dependencies/stb_image/include",
@@ -16,7 +18,7 @@
                 "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.17763.0",
-            "compilerPath": "g++",
+            "compilerPath": "D:\\App\\mingw\\mingw64\\bin\\gcc.exe",
             "cStandard": "c11",
             "cppStandard": "gnu++14",
             "intelliSenseMode": "clang-x86"

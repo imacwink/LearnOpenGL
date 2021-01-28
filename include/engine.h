@@ -15,7 +15,12 @@ using namespace std;
 using namespace ST::COMMON;
 
 // Function prototypes.
-void WindowResize(GLFWwindow* a_window, int a_width, int a_height);
+void WindowResizeEventCallback(GLFWwindow* a_window, int a_width, int a_height);
+void MouseEventCallback(GLFWwindow* a_window, double a_xPos, double a_yPos);
+void ScrollEventCallback(GLFWwindow* a_window, double a_xOffset, double a_yOffset);
+
+static double g_xOffset = 0.0f;
+static double g_yOffset = 0.0f;
 
 // Classes.
 class Engine
@@ -46,6 +51,7 @@ public:
     void Draw();
 
     void ProcessInput(GLFWwindow* a_window, float a_deltaTime);
+    void ProcessScroll(double a_xOffset, double a_yOffset);
 
 private:
     // OpenGL

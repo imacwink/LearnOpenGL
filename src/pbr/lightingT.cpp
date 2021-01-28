@@ -13,8 +13,8 @@ namespace ST
         void LightingT::createShader()
         {
             mShader = new Shader();
-            mShader->setVertexShader("./res/shaders/pbr_lightingT.vs");
-            mShader->setFragmentShader("./res/shaders/pbr_lightingT.fs");
+            mShader->setVertexShader("./res/shaders/pbr/pbr_lightingT.vs");
+            mShader->setFragmentShader("./res/shaders/pbr/pbr_lightingT.fs");
             mShader->compile();
             mShader->use();
         }
@@ -41,12 +41,17 @@ namespace ST
             mShader->setMat4("projection", projection);
         }
 
-        void LightingT::ProcessInput(int direction, float deltaTime)
+        void LightingT::ProcessInput(int a_direction, float a_deltaTime)
         {
             if (mCamera)
             {
-                mCamera->ProcessKeyboard((Camera_Movement)direction, deltaTime);
+                mCamera->ProcessKeyboard((Camera_Movement)a_direction, a_deltaTime);
             }
+        }
+
+        void LightingT::ProcessMouseScroll(float a_yOffset)
+        {
+            
         }
 
         void LightingT::Update(float a_deltaTime)

@@ -1,5 +1,6 @@
 #include "engine.h"
 #include "example.h"
+#include "color.h"
 #include "lighting.h"
 #include "lightingT.h"
 
@@ -59,7 +60,9 @@ int Engine::Initialize()
 
     // Setup callbacks.
     // Binds the 'framebuffer_size_callback' method to the window resize event.
-    glfwSetFramebufferSizeCallback(mWindow, WindowResize);
+    glfwSetFramebufferSizeCallback(mWindow, WindowResizeEventCallback);
+    glfwSetCursorPosCallback(mWindow, MouseEventCallback);
+    glfwSetScrollCallback(mWindow, ScrollEventCallback);
 
     this->SetupOpenGlRendering();
 
@@ -73,6 +76,7 @@ int Engine::Initialize()
 
         glfwPollEvents();
         this->ProcessInput(this->mWindow, m_deltaTime);
+        this->ProcessScroll(g_xOffset, g_yOffset);
 
         glClearColor(this->mClearColor.x, this->mClearColor.y, this->mClearColor.z, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -91,11 +95,48 @@ int Engine::Initialize()
     return 1;
 }
 
-void WindowResize(GLFWwindow* a_window, int a_width, int a_height)
+void Engine::SetupOpenGlRendering()
 {
-    glViewport(0, 0, a_width, a_height);
+    // TODO: Setup OpenGL code here...
 
-    // TODO: Do your resize logic here...
+    // Example* example = new Example();
+    // example->DrawSetting();
+    // mComponents.push_back(example);
+
+    // ST::PBR::Lighting* lighting =  new ST::PBR::Lighting();
+    // lighting->DrawSetting();
+    // mComponents.push_back(lighting);
+
+    // ST::PBR::LightingT* lightingT =  new ST::PBR::LightingT();
+    // lightingT->DrawSetting();
+    // mComponents.push_back(lightingT);
+
+    ST::Lighting::Color* color =  new ST::Lighting::Color();
+    color->DrawSetting();
+    mComponents.push_back(color);
+}
+
+void Engine::Update(float a_deltaTime)
+{
+    // TODO: Update your logic here...
+}
+
+void Engine::Draw()
+{
+    // TODO: Render your stuff here...
+    for(int i = 0; i < mComponents.size(); i++)
+    {
+        mComponents[i]->Draw();
+    }
+}
+
+void Engine::UninstallParams() 
+{
+    // TODO: Uninstall your render params here...
+    for(int i = 0; i < mComponents.size(); i++)
+    {
+        mComponents[i]->Uninstall();
+    }
 }
 
 void Engine::ProcessInput(GLFWwindow* a_window, float a_deltaTime)
@@ -138,42 +179,33 @@ void Engine::ProcessInput(GLFWwindow* a_window, float a_deltaTime)
         glfwSetWindowShouldClose(a_window, true);
 }
 
-void Engine::SetupOpenGlRendering()
+void Engine::ProcessScroll(double a_xOffset, double a_yOffset) 
 {
-    // TODO: Setup OpenGL code here...
-
-    // Example* example = new Example();
-    // example->DrawSetting();
-    // mComponents.push_back(example);
-
-    // ST::PBR::Lighting* lighting =  new ST::PBR::Lighting();
-    // lighting->DrawSetting();
-    // mComponents.push_back(lighting);
-
-    ST::PBR::LightingT* lightingT =  new ST::PBR::LightingT();
-    lightingT->DrawSetting();
-    mComponents.push_back(lightingT);
-}
-
-void Engine::Update(float a_deltaTime)
-{
-    // TODO: Update your logic here...
-}
-
-void Engine::Draw()
-{
-    // TODO: Render your stuff here...
+    if (0 == a_yOffset)
+    {
+        return;
+    }
+    
     for(int i = 0; i < mComponents.size(); i++)
     {
-        mComponents[i]->Draw();
+        mComponents[i]->ProcessMouseScroll(a_yOffset);
     }
 }
 
-void Engine::UninstallParams() 
+void WindowResizeEventCallback(GLFWwindow* a_window, int a_width, int a_height)
 {
-    // TODO: Uninstall your render params here...
-    for(int i = 0; i < mComponents.size(); i++)
-    {
-        mComponents[i]->Uninstall();
-    }
+    glViewport(0, 0, a_width, a_height);
+    // TODO: Do your resize logic here...
+}
+
+void MouseEventCallback(GLFWwindow* a_window, double a_Xpos, double a_yPos)
+{
+     //std::cout << "MouseEventCallback." << std::endl;
+}
+
+void ScrollEventCallback(GLFWwindow* a_window, double a_xOffset, double a_yOffset)
+{
+    std::cout << " a_xOffset: " << a_xOffset << " a_yOffset: " << a_yOffset << std::endl;
+    g_xOffset = a_xOffset;
+    g_yOffset = a_yOffset;
 }

@@ -17,7 +17,8 @@ namespace ST
                 void Update(float a_deltaTime);
                 void Draw();
                 void Uninstall();
-                void ProcessInput(int direction, float deltaTime);
+                void ProcessInput(int a_direction, float a_deltaTime);
+                void ProcessMouseScroll(float a_yOffset);
             
             private:
                 void createCamera();

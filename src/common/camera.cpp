@@ -69,7 +69,7 @@ namespace ST
 
         void Camera::ProcessMouseScroll(float yoffset)
         {
-            mZoom -= (float)yoffset;
+            mZoom -= (float)yoffset/200;
             if (mZoom < 1.0f)
                 mZoom = 1.0f;
             if (mZoom > 45.0f)

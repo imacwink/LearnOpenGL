@@ -13,7 +13,8 @@ namespace ST
                 virtual void Update(float a_deltaTime) = 0;
                 virtual void Draw() = 0;
                 virtual void Uninstall() = 0;
-                virtual void ProcessInput(int direction, float deltaTime) = 0;
+                virtual void ProcessInput(int a_direction, float a_deltaTime) = 0;
+                virtual void ProcessMouseScroll(float a_yOffset) = 0;
         };
     }
 }

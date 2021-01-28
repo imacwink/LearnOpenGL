@@ -9,6 +9,7 @@
             "windows": {
                 "args": [
                     "${workspaceRoot}/src/*.cpp",
+                    "${workspaceRoot}/src/lighting/*.cpp",
                     "${workspaceRoot}/src/pbr/*.cpp",
                     "${workspaceRoot}/src/common/*.cpp",
                     "${workspaceRoot}/dependencies/GLAD/src/glad.c",
@@ -16,6 +17,7 @@
                     "-g",
                     "--std=c++17",
                     "-I${workspaceRoot}/include",
+                    "-I${workspaceRoot}/include/lighting",
                     "-I${workspaceRoot}/include/pbr",
                     "-I${workspaceRoot}/include/common",
                     "-I${workspaceRoot}/dependencies/GLFW/include",

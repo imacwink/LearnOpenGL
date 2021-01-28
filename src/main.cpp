@@ -2,7 +2,7 @@
 
 int main()
 {
-    Engine engine(1920, 1080, "GL Window By MacWink");
+    Engine engine(Utils::mScreenWidth, Utils::mScreenHeight, "GL Window By MacWink");
 
     if(!engine.Initialize())
     {

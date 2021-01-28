@@ -5,6 +5,7 @@ Example::Example()
     // TODO::
 }
 
+
 void Example::DrawSetting()
 {
     glEnable(GL_DEPTH_TEST);
@@ -125,8 +126,14 @@ void Example::DrawSetting()
     // -------------------------------------------------------------------------------------------
     mShader->compile();
     mShader->use();
-    glUniform1i(mShader->getUniformLocation("texture1"), 0);
-    glUniform1i(mShader->getUniformLocation("texture2"), 1);
+
+    mShader->setInt("texture1", 0);
+    mShader->setInt("texture2", 1);
+}
+
+void Example::ProcessInput(int direction, float deltaTime)
+{
+    // TODO::     
 }
 
 void Example::Update(float a_deltaTime)
@@ -150,14 +157,14 @@ void Example::Draw()
 
     // pass projection matrix to shader (note that in this case it could change every frame)
     glm::mat4 projection = glm::perspective(glm::radians(45.0f), 1920.0f / 1080.0f, 0.1f, 1000.0f);
-    glUniformMatrix4fv(mShader->getUniformLocation("projection"), 1, GL_FALSE, &projection[0][0]);
+    mShader->setMat4("projection", projection);
 
     // camera/view transformation
     glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  3.0f);
     glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
     glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f);
     glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-    glUniformMatrix4fv(mShader->getUniformLocation("view"), 1, GL_FALSE, &view[0][0]);
+    mShader->setMat4("view", view);
 
     // render boxes
     glBindVertexArray(mVAO);
@@ -166,7 +173,7 @@ void Example::Draw()
     glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     model = glm::translate(model, glm::vec3(0.0f,  0.0f,  0.0f));
     model = glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f, 0.3f, 0.5f));
-    glUniformMatrix4fv(mShader->getUniformLocation("model"), 1, GL_FALSE, &model[0][0]);
+    mShader->setMat4("model", model);
 
     glDrawArrays(GL_TRIANGLES, 0, 36);
 }

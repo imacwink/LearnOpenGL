@@ -1,4 +1,6 @@
 #include "engine.h"
+#include "example.h"
+#include "lighting.h"
 
 Engine::Engine(int a_width, int a_height, const char* a_windowName)
 {
@@ -69,7 +71,7 @@ int Engine::Initialize()
         this->mLastFrameTime = m_frameTime;
 
         glfwPollEvents();
-        this->ProcessInput(this->mWindow);
+        this->ProcessInput(this->mWindow, m_deltaTime);
 
         glClearColor(this->mClearColor.x, this->mClearColor.y, this->mClearColor.z, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -95,9 +97,40 @@ void WindowResize(GLFWwindow* a_window, int a_width, int a_height)
     // TODO: Do your resize logic here...
 }
 
-void Engine::ProcessInput(GLFWwindow* a_window)
+void Engine::ProcessInput(GLFWwindow* a_window, float a_deltaTime)
 {
     // TODO: Process your input here...
+    if (glfwGetKey(a_window, GLFW_KEY_W) == GLFW_PRESS)
+    {
+        for(int i = 0; i < mComponents.size(); i++)
+        {
+            mComponents[i]->ProcessInput((int)FORWARD, a_deltaTime);
+        }
+    }
+
+    if (glfwGetKey(a_window, GLFW_KEY_S) == GLFW_PRESS)
+    {
+        for(int i = 0; i < mComponents.size(); i++)
+        {
+            mComponents[i]->ProcessInput((int)BACKWARD, a_deltaTime);
+        }
+    }
+
+    if (glfwGetKey(a_window, GLFW_KEY_A) == GLFW_PRESS)
+    {
+        for(int i = 0; i < mComponents.size(); i++)
+        {
+            mComponents[i]->ProcessInput((int)LEFT, a_deltaTime);
+        }
+    }
+
+    if (glfwGetKey(a_window, GLFW_KEY_D) == GLFW_PRESS)
+    {
+        for(int i = 0; i < mComponents.size(); i++)
+        {
+            mComponents[i]->ProcessInput((int)RIGHT, a_deltaTime);
+        }
+    }
 
     // If the escape key gets pressed, close the window.
     if(glfwGetKey(a_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -108,8 +141,13 @@ void Engine::SetupOpenGlRendering()
 {
     // TODO: Setup OpenGL code here...
 
-     mExample = new Example();
-     mExample->DrawSetting();
+    // Example* example = new Example();
+    // example->DrawSetting();
+    // mComponents.push_back(example);
+
+    ST::PBR::Lighting* lighting =  new ST::PBR::Lighting();
+    lighting->DrawSetting();
+    mComponents.push_back(lighting);
 }
 
 void Engine::Update(float a_deltaTime)
@@ -120,15 +158,17 @@ void Engine::Update(float a_deltaTime)
 void Engine::Draw()
 {
     // TODO: Render your stuff here...
-    if(mExample) {
-        mExample->Draw();
+    for(int i = 0; i < mComponents.size(); i++)
+    {
+        mComponents[i]->Draw();
     }
 }
 
 void Engine::UninstallParams() 
 {
     // TODO: Uninstall your render params here...
-    if(mExample) {
-        mExample->Uninstall();
+    for(int i = 0; i < mComponents.size(); i++)
+    {
+        mComponents[i]->Uninstall();
     }
 }

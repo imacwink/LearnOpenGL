@@ -1,6 +1,8 @@
 #include "engine.h"
 #include "example.h"
 #include "color.h"
+#include "diffuse.h"
+#include "specular.h"
 #include "lighting.h"
 #include "lightingT.h"
 
@@ -111,9 +113,17 @@ void Engine::SetupOpenGlRendering()
     // lightingT->DrawSetting();
     // mComponents.push_back(lightingT);
 
-    ST::Lighting::Color* color =  new ST::Lighting::Color();
-    color->DrawSetting();
-    mComponents.push_back(color);
+    // ST::Lighting::Color* color =  new ST::Lighting::Color();
+    // color->DrawSetting();
+    // mComponents.push_back(color);
+    
+    // ST::Lighting::Diffuse* diffuse = new ST::Lighting::Diffuse();
+    // diffuse->DrawSetting();
+    // mComponents.push_back(diffuse);
+
+    ST::Lighting::Specular* specular = new ST::Lighting::Specular();
+    specular->DrawSetting();
+    mComponents.push_back(specular);
 }
 
 void Engine::Update(float a_deltaTime)

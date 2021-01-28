@@ -25,6 +25,8 @@ namespace ST
 
         void Color::stepGL() 
         {
+            glEnable(GL_DEPTH_TEST);
+
             // configure the cube's VAO (and VBO);
             glGenVertexArrays(1, &mCubeVAO);
             glGenBuffers(1, &mVBO);

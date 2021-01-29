@@ -105,13 +105,13 @@ void Engine::SetupOpenGlRendering()
     // example->DrawSetting();
     // mComponents.push_back(example);
 
-    ST::PBR::Lighting* lighting =  new ST::PBR::Lighting();
-    lighting->DrawSetting();
-    mComponents.push_back(lighting);
+    // ST::PBR::Lighting* lighting =  new ST::PBR::Lighting();
+    // lighting->DrawSetting();
+    // mComponents.push_back(lighting);
 
-    // ST::PBR::LightingT* lightingT =  new ST::PBR::LightingT();
-    // lightingT->DrawSetting();
-    // mComponents.push_back(lightingT);
+    ST::PBR::LightingT* lightingT =  new ST::PBR::LightingT();
+    lightingT->DrawSetting();
+    mComponents.push_back(lightingT);
 
     // ST::Lighting::Color* color =  new ST::Lighting::Color();
     // color->DrawSetting();

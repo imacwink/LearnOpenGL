@@ -3,8 +3,11 @@
 #include <component.h>
 #include <shader.h>
 #include <camera.h>
+#include <sphere.h>
+#include <vector>
 
 using namespace ST::COMMON;
+using namespace std;
 
 namespace ST
 {
@@ -23,23 +26,23 @@ namespace ST
             private:
                 void createCamera();
                 void createShader();
-                void renderSphere();
+                void createSpheres();
 
             private:
                 Shader* mShader;
                 Camera* mCamera;
+                vector <Sphere*> mSpheres;
 
-                int nrRows    = 7;
-                int nrColumns = 7;
-                float spacing = 2.5;
-                unsigned int sphereVAO = 0;
-                unsigned int indexCount;
-                glm::vec3 lightPositions[4] = { 
+                int mRows    = 7;
+                int mColumns = 7;
+                float mSpacing = 2.5;
+
+                glm::vec3 mLightPositions[4] = { 
                     glm::vec3(-10.0f,  10.0f, 10.0f), 
                     glm::vec3( 10.0f,  10.0f, 10.0f),
                     glm::vec3(-10.0f, -10.0f, 10.0f),
                     glm::vec3( 10.0f, -10.0f, 10.0f)};
-                glm::vec3 lightColors[4] = {
+                glm::vec3 mLightColors[4] = {
                     glm::vec3(300.0f, 300.0f, 300.0f),
                     glm::vec3(300.0f, 300.0f, 300.0f),
                     glm::vec3(300.0f, 300.0f, 300.0f),

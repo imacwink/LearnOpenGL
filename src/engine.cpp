@@ -105,9 +105,9 @@ void Engine::SetupOpenGlRendering()
     // example->DrawSetting();
     // mComponents.push_back(example);
 
-    // ST::PBR::Lighting* lighting =  new ST::PBR::Lighting();
-    // lighting->DrawSetting();
-    // mComponents.push_back(lighting);
+    ST::PBR::Lighting* lighting =  new ST::PBR::Lighting();
+    lighting->DrawSetting();
+    mComponents.push_back(lighting);
 
     // ST::PBR::LightingT* lightingT =  new ST::PBR::LightingT();
     // lightingT->DrawSetting();
@@ -121,9 +121,9 @@ void Engine::SetupOpenGlRendering()
     // diffuse->DrawSetting();
     // mComponents.push_back(diffuse);
 
-    ST::Lighting::Specular* specular = new ST::Lighting::Specular();
-    specular->DrawSetting();
-    mComponents.push_back(specular);
+    // ST::Lighting::Specular* specular = new ST::Lighting::Specular();
+    // specular->DrawSetting();
+    // mComponents.push_back(specular);
 }
 
 void Engine::Update(float a_deltaTime)

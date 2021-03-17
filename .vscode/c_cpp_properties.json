@@ -3,13 +3,12 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}",
                 "${workspaceFolder}/include",
                 "${workspaceFolder}/include/lighting",
                 "${workspaceFolder}/include/pbr",
                 "${workspaceFolder}/include/common",
-                "${workspaceFolder}/dependencies/GLFW/include",
                 "${workspaceFolder}/dependencies/GLAD/include",
+                "${workspaceFolder}/dependencies/GLFW/include",
                 "${workspaceFolder}/dependencies/stb_image/include",
                 "${workspaceFolder}/dependencies/GLM"
             ],
@@ -23,6 +22,27 @@
             "cStandard": "c11",
             "cppStandard": "gnu++14",
             "intelliSenseMode": "clang-x86"
+        },
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/include/lighting",
+                "${workspaceFolder}/include/pbr",
+                "${workspaceFolder}/include/common",
+                "${workspaceFolder}/dependencies/GLAD/include",
+                "${workspaceFolder}/dependencies/stb_image/include",
+                "${workspaceFolder}/dependencies/GLM"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-x64"
         }
     ],
     "version": 4

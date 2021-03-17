@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "LearnOpenGL",
+            "name": "GL-Win32",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceRoot}/builds/windows/main",
@@ -20,7 +20,28 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "Build"
+            "preLaunchTask": "Build-Win32"
+        },
+        {
+            "name": "GL-Linux",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/builds/linux/main",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "Build-Linux",
+            "miDebuggerPath": "/usr/bin/gdb"
         }
     ]
 }

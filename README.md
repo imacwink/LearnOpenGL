@@ -15,8 +15,14 @@
 
 ## environment 
 
+### Windows
 - Compiler
   - GCC: (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 8.1.0
+- C++ 17
+
+### Linux
+- Compiler
+  - GCC (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0
 - C++ 17
 
 ## dependencies 

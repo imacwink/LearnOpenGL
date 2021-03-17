@@ -19,6 +19,7 @@
                     "-I${workspaceRoot}/include",
                     "-I${workspaceRoot}/include/lighting",
                     "-I${workspaceRoot}/include/pbr",
+                    "-I${workspaceRoot}/include/pbr/ibl",
                     "-I${workspaceRoot}/include/common",
                     "-I${workspaceFolder}/dependencies/GLAD/include",
                     "-I${workspaceRoot}/dependencies/GLFW/include",

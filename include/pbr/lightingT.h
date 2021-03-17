@@ -33,8 +33,8 @@ namespace ST
                 Camera* mCamera;
                 vector <Sphere*> mSpheres;
 
-                int mRows    = 7;
-                int mColumns = 7;
+                int mRows    = 3;
+                int mColumns = 3;
                 float mSpacing = 2.5;
 
                 glm::vec3 mLightPositions[1] = { glm::vec3(0.0f, 0.0f, 10.0f) };

@@ -6,6 +6,7 @@
                 "${workspaceFolder}/include",
                 "${workspaceFolder}/include/lighting",
                 "${workspaceFolder}/include/pbr",
+                "${workspaceFolder}/include/pbr/ibl",
                 "${workspaceFolder}/include/common",
                 "${workspaceFolder}/dependencies/GLAD/include",
                 "${workspaceFolder}/dependencies/GLFW/include",

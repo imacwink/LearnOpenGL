@@ -11,7 +11,7 @@ namespace ST
             {
                 for (int j = 0; j < mColumns; ++j) 
                 {
-                    Sphere* sphere =  new Sphere();
+                    Sphere* sphere = new Sphere();
                     sphere->Initialize();
                     mSpheres.push_back(sphere);
                 }
@@ -20,7 +20,7 @@ namespace ST
 
         void LightingT::createCamera()
         {
-            mCamera = new Camera(glm::vec3(0.0f, 0.0f, 24.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f);
+            mCamera = new Camera(glm::vec3(0.0f, 0.0f, 10.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f);
         }
 
         void LightingT::createShader()
@@ -70,7 +70,6 @@ namespace ST
 
         void LightingT::Draw()
         {
-            // render
             glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -90,7 +89,7 @@ namespace ST
             glActiveTexture(GL_TEXTURE4);
             glBindTexture(GL_TEXTURE_2D, mAO);
 
-            // render rows*column number of spheres with material properties defined by textures (they all have the same material properties)
+            // render rows * column number of spheres with material properties defined by textures (they all have the same material properties)
             glm::mat4 model = glm::mat4(1.0f);
             for (int i = 0; i < mRows; ++i)
             {
@@ -112,11 +111,6 @@ namespace ST
                 newPos = mLightPositions[i];
                 mShader->setVec3("lightPositions[" + std::to_string(i) + "]", newPos);
                 mShader->setVec3("lightColors[" + std::to_string(i) + "]", mLightColors[i]);
-
-                model = glm::mat4(1.0f);
-                model = glm::translate(model, newPos);
-                model = glm::scale(model, glm::vec3(0.5f));
-                mShader->setMat4("model", model);
             }
         }
 

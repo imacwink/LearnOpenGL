@@ -69,7 +69,7 @@ namespace ST
 
         void Camera::ProcessMouseScroll(float yoffset)
         {
-            mZoom -= (float)yoffset/200;
+            mZoom -= (float)yoffset/100;
             if (mZoom < 1.0f)
                 mZoom = 1.0f;
             if (mZoom > 45.0f)
@@ -84,6 +84,7 @@ namespace ST
             front.y = sin(glm::radians(mPitch));
             front.z = sin(glm::radians(mYaw)) * cos(glm::radians(mPitch));
             mFront = glm::normalize(front);
+
             // also re-calculate the Right and Up vector
             mRight = glm::normalize(glm::cross(mFront, mWorldUp));  // normalize the vectors, because their length gets closer to 0 the more you look up or down which results in slower movement.
             mUp    = glm::normalize(glm::cross(mRight, mFront));
